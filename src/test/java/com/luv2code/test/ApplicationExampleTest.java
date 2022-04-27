@@ -1,7 +1,10 @@
 package com.luv2code.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -70,6 +73,28 @@ public class ApplicationExampleTest {
 	{
 		assertNotEquals(0,studentGrades.addGradeResultsForSingleClass(
 				student.getStudentGrades().getMathGradeResults()));
+	}
+	
+	@Test
+	@DisplayName("Is grade greater")
+	public void isGradeGreaterStudentGrades()
+	{
+		assertTrue(studentGrades.isGradeGreater(90, 75),"Failure - Should be true");
+	}
+	
+	@DisplayName("Is grade greater false")
+	@Test
+	public void isGradeGreaterStudentGradesAssertFalse()
+	{
+		assertFalse(studentGrades.isGradeGreater(89, 90),"Failure - should be false");
+	}
+	
+	@DisplayName("Check Null for student grades")
+	@Test
+	public void checkNullForStudentGrades()
+	{
+		assertNotNull(studentGrades.checkNull(student.getStudentGrades()
+				.getMathGradeResults()),"Object should not be null");
 	}
 
 }
